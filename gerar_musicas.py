@@ -10,7 +10,7 @@ com a capa (pasta capas/) e com o tema (arquivo temas.py).
 Como usar:  python3 gerar_musicas.py
 """
 
-import os, json
+import os, json, datetime
 from urllib.parse import quote
 
 # ----------------------------------------------------------------------
@@ -91,10 +91,17 @@ def main():
         capa = ("capas/" + quote(capa_arq)) if capa_arq else ""
         if capa:
             com_capa += 1
+        # data = data de MODIFICACAO do MP3 (costuma ser a data real da criacao da musica)
+        try:
+            ts = os.path.getmtime(os.path.join(PASTA_MUSICAS, arquivo))
+            data = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+        except OSError:
+            data = ""
         musicas.append({
             "titulo": titulo_do_arquivo(base),
             "autor": AUTOR,
             "tema": tema_do(base),
+            "data": data,
             "capa": capa,
             "audio": url_audio(arquivo),
             "dedicatoria": ""
