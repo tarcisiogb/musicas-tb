@@ -1,0 +1,5 @@
+# Os audios ficam no Cloudflare R2, nao no GitHub:
+musicas/
+
+# Arquivos de sistema do Mac
+.DS_Store
