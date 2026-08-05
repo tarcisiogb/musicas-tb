@@ -69,7 +69,7 @@
 html,body{margin:0}
 body{
   background:
-    radial-gradient(120% 90% at 50% -10%, #241b12 0%, var(--bg) 55%) fixed,
+    radial-gradient(120% 90% at 50% -10%, #241b12 0%, var(--bg) 55%),
     var(--bg);
   color:var(--ink);
   font-family:"Inter",system-ui,sans-serif;
@@ -167,7 +167,7 @@ body{
 /* ---------- Player fixo ---------- */
 .player{
   position:fixed;left:0;right:0;bottom:0;height:var(--player-h);
-  background:rgba(24,18,13,.86);backdrop-filter:blur(16px);
+  background:rgba(24,18,13,.94);
   border-top:1px solid var(--hair);
   display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.4fr);
   align-items:center;gap:20px;padding:0 22px;z-index:40
@@ -298,8 +298,8 @@ input[type=range].bar:focus-visible{outline:2px solid var(--brass);outline-offse
 @media (max-width:640px){ .tema-head{margin:26px 16px 14px;padding-top:18px} .tema .grid{padding:0 16px 4px} }
 
 /* ---------- Alternador tema/nome ---------- */
-.switcher{display:flex;justify-content:center;gap:6px;margin:8px auto 8px;padding:5px;width:max-content;background:var(--panel);border:1px solid var(--hair);border-radius:999px}
-.switch-btn{appearance:none;border:0;background:transparent;color:var(--muted);font:inherit;font-size:.85rem;padding:8px 16px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.switcher{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:6px;margin:8px auto 8px;padding:5px;width:max-content;max-width:calc(100% - 20px);background:var(--panel);border:1px solid var(--hair);border-radius:999px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.switch-btn{appearance:none;border:0;background:transparent;color:var(--muted);font:inherit;font-size:.85rem;padding:8px 13px;border-radius:999px;cursor:pointer;white-space:nowrap;flex:0 0 auto;transition:background .2s,color .2s}
 .switch-btn.is-on{background:var(--brass);color:#20160c;font-weight:600}
 .switch-btn:not(.is-on):hover{color:var(--ink)}
 .switch-btn:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
@@ -315,7 +315,7 @@ input[type=range].bar:focus-visible{outline:2px solid var(--brass);outline-offse
 @media (max-width:640px){ .aviso-topo{margin:0 16px 6px;padding:12px 16px} }
 
 /* ---------- Contador de reproduções + 4 abas ---------- */
-.switcher{flex-wrap:wrap}
+.switcher::-webkit-scrollbar{display:none}
 .plays{margin-top:6px;font-size:.7rem;color:var(--muted);display:flex;align-items:center;gap:5px}
 .plays .play-ico{color:var(--brass);font-size:.6rem}
 
